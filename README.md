@@ -25,23 +25,27 @@ How do I play this awesome game?
 
 ###### Rules
 
-1. Click new hand
-2. Place one of your tiles on the board, each tile with a coloured edge must be placed touching a tile of that colour
-3. Each tile will cause your character to either attack, increase strength, or increase  defense
-4. If your opponents's health reaches 0, you win
-5. If you can not play any tiles, or want different ones, you can click 'new hand', which will use up your turn
+* You need 2 people to play
+* After there are 2 players you can draw your first hand by selecting "Draw Cards"
+* Players take turns placing tiles on the board
+     * Each tile has a body color and potentially edge colors
+     * Colored edges must be placed adjacent to tiles with the same body color
+* Each tile will cause your character to either attack, increase strength or increase defence
+* If your opponents's health reaches 0, you win
+* If you can not play any tiles, or want different ones, you can click 'new hand', which will use up your turn
  
 ###### Legend
+There a couple types of tiles   
 
-Fist: Increase attack points by 1   
-Swords: attack times the number of swords, to do damage to your opponent   
-Shield: increase your defense points by one, reducing the damage done by your opponent   
+Fist: Your attacks deal +1 damage
+Swords: Attack the opponant to deal damage, you get one attack for every sword on the tile 
+Shield: Opponent's attacks deal -1 damage (to a minimum of 1)
 
 ###### Ok enough rules I want to play! NOW!
 
 Dude, calm down. Follow these steps and everything will be alright...
 
-1. Goto [uken_hackathon.meteor.com](http://uken_hackathon.meteor.com)
+1. Goto [dominotion.meteor.com](http://dominotion.meteor.com)
 2. Create a game by typing your desired game name and selecting 'Create Game'
 3. Find a friend and have them join your game (you need 2 people to play)
     * If you have no friends we'll be your friends. Add us on GChat and we'll play with you
