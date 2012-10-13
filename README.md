@@ -21,7 +21,7 @@ How do I play this awesome game?
 ###### Rules
 
 1. Click draw hand
-2. Place one of your tiles on the board, each tile with a coloured edge must be touching a tile of that colour
+2. Place one of your tiles on the board, each tile with a coloured edge must be placed touching a tile of that colour
 3. Each tile will cause your character to either attack, increase strength, or increase  defense
 4. If your opponents's health reaches 0, you win
  
