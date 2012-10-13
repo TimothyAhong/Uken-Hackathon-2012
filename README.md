@@ -5,7 +5,12 @@ Dominotion
 
 Dominotion is multi-player tile based game. Go head to head with a friend (or a random person online) placing tiles to control your warrior. Take down the opponent's warrior before they take down yours!
 
-You can play Dominotion for free at [uken_hackathon.meteor.com](http://uken_hackathon.meteor.com).
+You can play Dominotion for free at the following URLs
+* [uken_hackathon.meteor.com](http://uken_hackathon.meteor.com)
+* [dominotion.meteor.com](http://dominotion.meteor.com)
+* [dominotion2.meteor.com](http://dominotion2.meteor.com)
+
+If you want to build and run your own Dominotion server see below  
 
 ###### Why?
 Uken hackathon
@@ -64,12 +69,22 @@ A full suite of hip new fangled technologies were used when developing Dominotio
 Dominotion rests within the MeteorJS framework. Through Meteor we have used coffeescript for the server and client side code. Styling has been with basic CSS and templating with HTML with handlebars
 
 ###### Graphics and visuals
-For the motion graphics we used KineticJS, a lightweight graphics framework that utilizes HTML5 canvas. KineticJS has a simple sprite management system that was very usefull. For the board we used straight up HTML tables (with help from bootstrap) and CSS
+For the motion graphics we used KineticJS, a lightweight graphics framework that utilizes HTML5 canvas. KineticJS has a simple sprite management system that was very usefull. For the board we used straight up HTML tables (with help from bootstrap) and CSS. The base image for the sprites has been taken from BattleHeart.
 
 ###### But will it scale?
 Unlikely...
 You could probably bring the free server to its knees with a dozen or so concurrent games
 
-###### But is it secure?
-Heck no!
+How do I run my own Dominotion Server?
+--------------------------------
+1. First you'll need meteor you can get it by checking out [Meteor](https://meteor.com). Or by running the following command
+<pre>
+$ curl https://install.meteor.com | sh
+</pre>
+2. Download the source
+3. Navigate to the folder and run
+<pre>
+$ meteor
+</pre>
+
 
