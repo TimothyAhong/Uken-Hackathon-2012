@@ -1,46 +1,66 @@
 <template name="game">
-    {{>game_top}}
-    {{>board}}
-    {{>game_bottom}}
+    <div class="game_container">
+        {{>game_top}}
+        {{>board}}
+        {{>game_bottom}}
+    </div>
 </template>
 
 <template name="game_top">
-    <div class="row">
-        <div class="span3">
-            <table>
-            {{#each their_hand}}
-                {{>board_item}}
-            {{/each}}
-            </table>
+    <div class="gamebar fixed_top">
+        <div class="embossed_text" style="position:absolute; right:2px; bottom:-40px;">
+            ENEMY
         </div>
-        <div><i class="icon-heart"></i>{{their_hearts}}</div>
-        <div><i class="icon-circle-arrow-up"></i>{{their_def}}</div>
-        <div><i class="icon-arrow-up"></i>{{their_atk}}</div>
+        <div class="row">
+            <div class="bar_icons">
+                <i class="icon-heart icon-white"></i> X {{their_hearts}} <br />
+                <i class="icon-circle-arrow-up icon-white"></i> X {{their_def}} <br />
+                <i class="icon-arrow-up icon-white"></i> X {{their_atk}} <br />
+            </div>
+            <div class="hand">
+                <table class="hand_table">
+                {{#each their_hand}}
+                    {{>board_item}}
+                {{/each}}
+                </table>
+            </div>
+        </div>
     </div>
 </template>
 
 <template name="game_bottom">
-    <div class="row">
-        <div class="span3">
-            <table>
-            {{#each my_hand}}
-                {{>board_item}}
-            {{/each}}
-            </table>
+    <div class="gamebar fixed_bottom">
+        <div class="embossed_text" style="position:absolute; left:0px; top:-42px;">
+            YOU
         </div>
-        <div><i class="icon-heart"></i>{{my_hearts}}</div>
-        <div><i class="icon-circle-arrow-up"></i>{{my_def}}</div>
-        <div><i class="icon-arrow-up"></i>{{my_atk}}</div>
+        <div class="row">
+            <div class="bar_icons">
+                <i class="icon-heart icon-white icon-large"></i> X {{my_hearts}} <br />
+                <i class="icon-circle-arrow-up icon-white icon-large"></i> X {{my_def}} <br />
+                <i class="icon-arrow-up icon-white icon-large"></i> X {{my_atk}} <br />
+            </div>
+            <div class="hand">
+                <table class="hand_table">
+                {{#each my_hand}}
+                    {{>board_item}}
+                {{/each}}
+                </table>
+            </div>
+            <div class="bar_controls">
+                <button id="new_hand" class="btn btn-large btn-inverse new_hand">New Hand</button>
+            </div>
+        </div>
     </div>
 </template>
 
 <template name="board">
-    BOARD
-    <table class="board">
-        {{#each board_rows}}
-            {{>board_row}}
-        {{/each}}
-    </table>
+    <div class="board_container">
+        <table class="board">
+            {{#each board_rows}}
+                {{>board_row}}
+            {{/each}}
+        </table>
+    </div>
 </template>
 
 <template name="board_row">

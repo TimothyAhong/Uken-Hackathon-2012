@@ -5,19 +5,23 @@
                 <input id="create_game_input" class="" style="width:160px;" size="16" type="text" placeholder="New Game..."><button id="create_game" class="btn btn-primary" type="button">Create</button>
             </div>
         </div>
-        <div style="width:300px">
-            <table class="table">
-            {{#each game_index_items}}
-                {{>game_index_item}}
-            {{/each}}
-            </table>
+        <div class="row">
+            <div class="span4"></div>
+            <div class="span4">
+                <table class="table">
+                {{#each game_index_items}}
+                    {{>game_index_item}}
+                {{/each}}
+                </table>
+            </div>
+            <div class="span4"></div>
         </div>
     </div>
 </template>
 
 <template name="game_index_item">
     <tr>
-        <td style="width:100px;">{{name}}</td>
+        <td style="width:300px;">{{name}}</td>
         <td style="width:160px;">
             <div class="btn-group">
             <button id="play_game" class="btn btn-warning {{game_full_status}}"><i class="icon-asterisk icon-white"></i> Play</button>

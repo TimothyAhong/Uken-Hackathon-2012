@@ -19,6 +19,13 @@ Template.board_item.helpers
         str+=" right_"+this.color_right
         str+=" left_"+this.color_left
         str+=" bottom_"+this.color_bottom
+        
+        if this.action
+            str+=" action_"+this.action
+        else
+            str+=" action_empty"
+
+        return str
 
 Template.game_bottom.helpers
     my_hand: ->
@@ -73,3 +80,7 @@ Template.board_item.events
             game_controller.place_tile(this,evt)
         if this.location == Session.get('player_number')
             game_controller.select_tile(this,evt)
+
+Template.game_bottom.events
+    'click #new_hand': (evt) ->
+        game_controller.draw_cards(Session.get('game_id'),Session.get('player_number'))

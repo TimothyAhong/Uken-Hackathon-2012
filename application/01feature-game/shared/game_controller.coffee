@@ -42,12 +42,12 @@ class game_controller
             options = _.reject(options, (option) -> option == edge_not)
         console.log(options)
         len = options.length
-        return options[Math.floor( Math.random()*(len-1) )]
+        return options[Math.floor( Math.random()*(len) )]
 
     @generate_random_action: (rank) ->
         options = [
-            ['atk'],
-            ['atk2','atk_plus','def_plus'],
+            ['atk','def_plus'],
+            ['atk2','atk_plus'],
             ['atk3']
         ]
         len = options[rank].length
@@ -87,11 +87,12 @@ class game_controller
         update = new mongo_update
         update.$set.players = game.players
         update.$set.players[player_num]['hand'] = []
-        update.$set.players[player_num]['hand'][0] = game_controller.generate_random_tile(0, location, 0, 0)
-        update.$set.players[player_num]['hand'][1] = game_controller.generate_random_tile(1, location, 1, 0)
-        update.$set.players[player_num]['hand'][2] = game_controller.generate_random_tile(1, location, 2, 0)
-        update.$set.players[player_num]['hand'][3] = game_controller.generate_random_tile(1, location, 3, 0)
-        update.$set.players[player_num]['hand'][4] = game_controller.generate_random_tile(2, location, 4, 0)
+
+        #the ranks of the starting hand
+        ranks = [0,0,0,1,1,1,2,2]
+        for i in [0..ranks.length-1]
+            update.$set.players[player_num]['hand'][i] = game_controller.generate_random_tile(ranks[i], location, i, 0)
+
         game_model.update(game_id,update)
 
     @switch_turn: (game_id) ->
@@ -99,6 +100,8 @@ class game_controller
         update = new mongo_update
         update.$set.player_turn = if Session.get('player_number')==1 then 0 else 1
         game_model.update(game_id,update)
+
+        #TODO update animation db for the player turn
 
     @dmg: (def,atk) ->
         n = atk - def
@@ -108,7 +111,7 @@ class game_controller
 
     @action: (tile,players,player_num) ->
         other_num = if player_num == 1 then 0 else 1
-
+        #TODO update animation db based on the action
         switch(tile.action)
             when "atk"
                 players[other_num]['hearts'] -= game_controller.dmg(players[other_num]['def'],players[player_num]['atk'])
@@ -130,12 +133,17 @@ class game_controller
     PLAYER ACTIONS
     ###
     @draw_cards: (game_id,player_num) ->
+        game = game_model.get(game_id)
+        return if not game_controller.my_turn(game,player_num)
+
         game_controller.dealto(game_id,player_num)
         game_controller.switch_turn(game_id,player_num)
+        #TODO call animation for card drawing (they get covered then show up again?)
 
     @select_tile: (target,evt) ->
         #set the active tile
         game_controller.active_tile = target
+        #TODO call local animation for selecing the tile
 
     @place_tile: (target,evt) ->
         game_id = Session.get('game_id')
@@ -148,8 +156,7 @@ class game_controller
         game = game_model.get(game_id)
 
         #make sure its this players turn
-        if game.player_turn != player_num
-            return
+        return if not game_controller.my_turn(game,player_num)
 
         #check if this tile is occupied
         if target.color != 'w'
@@ -191,8 +198,12 @@ class game_controller
         #do the action on the tile
         update.$set.players = game_controller.action(placeable,game.players,player_num)
 
+        #update model
         game_model.update(game_id,update)
+        #TODO update animation db for placing a tile
 
+
+        #update self
         game_controller.active_tile = false
         game_controller.switch_turn(game_id)
 
@@ -203,5 +214,8 @@ class game_controller
     @check_tile_color: (board) ->
     @game_full: (game) ->
         return game['players'][0]? and game['players'][1]?
+
+    @my_turn: (game,player_num) ->
+        return game.player_turn == player_num
 
     

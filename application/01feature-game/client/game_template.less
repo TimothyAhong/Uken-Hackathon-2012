@@ -1,22 +1,117 @@
 @sd: 5px;
-@red: #E03E36;
-@blue: #5B72F5;
-@green: #83E637;
+@red: rgba(187,43,60,1);
+@blue: rgba(36,148,219,1);
+@green: rgba(135,174,42,1);
 
-.board_item {
-    width: 50px;
-    height: 50px;
-    margin:10px;
-    padding:1px;
-    opacity:0.7;
+@white: rgba(215,207,198,1);
+
+@red_mid: rgba(61,0,0,1);
+@blue_mid: rgba(5,28,57,1);
+@green_mid: rgba(27,70,17,1);
+
+.game_container {
+    display:block;
+    top:0px;
+    left:0px;
+    height:100%;
+    width:100%;
+    position:absolute;
+    background-image:url('/bedge_grunge.png');
+    background-repeat:repeat;
 }
 
+.fixed_top {
+    top:0px;
+}
+
+.fixed_bottom {
+    bottom:0px;
+}
+
+.gamebar {
+    display:block;
+    position:absolute;
+    left:0px;
+    width:100%;
+    height:100px;
+    background-image:url('/low_contrast_linen.png');
+    background-repeat:repeat;
+
+}
+
+.hand {
+    overflow-x:scroll;
+    margin: 0px auto;
+    padding-top: 5px;
+    max-width:800px;
+}
+
+.bar_icons {
+    position:absolute; display:block; top:20px; color:white; left:16px;
+}
+
+.bar_controls { position: absolute; top: 8px; right: 8px; }
+
+.new_hand{height: 75px;}
+
+.board {
+    margin: 0px auto;
+}
+
+.board_container {
+    width:100%;
+    overflow: auto;
+    margin-top: 150px;
+    margin-bottom: 150px;
+    text-align: center;
+    vertical-align: middle;
+    position:absolute;
+}
+
+.hand_table td.board_item {
+    padding:5px;
+    background:none;
+    box-shadow:none;
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+
+}
+
+.board_item {
+    width: 80px;
+    height: 80px;
+    margin:10px;
+    padding:0px;
+}
+
+td.board_item {
+    background:#fff;
+    background:-moz-linear-gradient(top, #fff, #eee);
+    background:-webkit-gradient(linear,0 0, 0 100%, from(#fff), to(#eee));
+    box-shadow:inset 0 0 0 1px #fff;
+    -moz-box-shadow:inset 0 0 0 1px #fff;
+    -webkit-box-shadow:inset 0 0 0 1px #fff;
+    text-align:center;
+    vertical-align:middle;
+}
+
+.board tr:nth-child(odd) td:nth-child(even),
+.board tr:nth-child(even) td:nth-child(odd) {
+    background:#ccc;
+    background:-moz-linear-gradient(top, #ccc, #eee);
+    background:-webkit-gradient(linear,0 0, 0 100%, from(#ccc), to(#eee));
+    box-shadow:inset 0 0 10px rgba(0,0,0,.4);
+    -moz-box-shadow:inset 0 0 10px rgba(0,0,0,.4);
+    -webkit-box-shadow:inset 0 0 10px rgba(0,0,0,.4);
+}
+
+
 .board_item_graphic {
-    height:40px;
-    width:40px;
+    height:64px;
+    width:64px;
     border-style: solid;
-    border-color: gray;
-    border-width: 5px;
+    border-color: @white;
+    border-width: 8px;
 }
 
 .bkg_red { background-color: @red;}
@@ -38,3 +133,49 @@
 .bottom_red { border-bottom-color: @red; }
 .bottom_blue { border-bottom-color: @blue; }
 .bottom_green { border-bottom-color: @green; }
+
+.action_regular_background{
+    background-position: left top, center center;
+    background-repeat: repeat, no-repeat;
+}
+
+.action_empty {
+    background-image: url('/empty_bg.png');
+    background-repeat: repeat;
+    border-width:0px;
+    width:80px;
+    height:80px;
+}
+
+.action_atk { 
+    background-image: url('/rank2_bg.png'), url('atk.png');
+    .action_regular_background;
+}
+
+.action_atk2 { 
+    background-image: url('/rank2_bg.png'), url('atk2.png');
+    .action_regular_background;
+
+}
+
+.action_atk3 { 
+    background-image: url('/rank2_bg.png'), url('atk3.png');
+    .action_regular_background;
+}
+
+.action_atk_plus { 
+    background-image: url('/rank2_bg.png'), url('atk_plus.png');
+    .action_regular_background;
+}
+
+.action_def_plus { 
+    background-image: url('/rank2_bg.png'), url('atk_plus.png');
+    .action_regular_background;
+}
+
+.embossed_text {
+    text-shadow: 0px 2px 2px white;
+    color: rgba(175, 164, 150, 0.75);
+    font: 35px "Arial Black";
+}
+
