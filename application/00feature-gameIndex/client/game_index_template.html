@@ -6,22 +6,22 @@
             </div>
         </div>
         <div class="row">
-            <div class="span4"></div>
-            <div class="span4">
+            <div class="span2"></div>
+            <div class="span8">
                 <table class="table">
                 {{#each game_index_items}}
                     {{>game_index_item}}
                 {{/each}}
                 </table>
             </div>
-            <div class="span4"></div>
+            <div class="span2"></div>
         </div>
     </div>
 </template>
 
 <template name="game_index_item">
     <tr>
-        <td style="width:300px;">{{name}}</td>
+        <td class="embt" style="width:300px;">{{name}}</td>
         <td style="width:160px;">
             <div class="btn-group">
             <button id="play_game" class="btn btn-warning {{game_full_status}}"><i class="icon-asterisk icon-white"></i> Play</button>
