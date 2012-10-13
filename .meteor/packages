@@ -5,3 +5,8 @@
 
 autopublish
 preserve-inputs
+coffeescript
+less
+jquery
+underscore
+bootstrap
