@@ -20,15 +20,16 @@ How do I play this awesome game?
 
 ###### Rules
 
-1. Click draw hand
+1. Click new hand
 2. Place one of your tiles on the board, each tile with a coloured edge must be placed touching a tile of that colour
 3. Each tile will cause your character to either attack, increase strength, or increase  defense
 4. If your opponents's health reaches 0, you win
+5. If you can not play any tiles, or want different ones, you can click 'new hand', which will use up your turn
  
 ###### Legend
 
 Fist: Increase attack points by 1
-Swords: attack times the number of swords to do damage to your opponent
+Swords: attack times the number of swords, to do damage to your opponent
 Shield: increase your defense points by one, reducing the damage done by your opponent
 
 ###### Ok enough rules I want to play! NOW!
@@ -49,7 +50,7 @@ Dude, calm down. Follow these steps and everything will be alright...
 Whats up with these codes?
 --------------------------------
 
-A full suite of hip new fangled technologies were used when developing Warrior O's. Lets break it down:
+A full suite of hip new fangled technologies were used when developing Dominotion. Lets break it down:
 * [Meteor](https://meteor.com)
 * [Coffeescript](http://coffeescript.org)
 * [Handlebars](http://handlebarsjs.com)
@@ -60,7 +61,7 @@ A full suite of hip new fangled technologies were used when developing Warrior O
 * [Underscore](http://documentcloud.github.com/underscore/)
 
 ###### Server and framework
-Warrior O's rests within the MeteorJS framework. Through Meteor we have used coffeescript for the server and client side code. Styling has been with basic CSS and templating with HTML with handlebars
+Dominotion rests within the MeteorJS framework. Through Meteor we have used coffeescript for the server and client side code. Styling has been with basic CSS and templating with HTML with handlebars
 
 ###### Graphics and visuals
 For the motion graphics we used KineticJS, a lightweight graphics framework that utilizes HTML5 canvas. KineticJS has a simple sprite management system that was very usefull. For the board we used straight up HTML tables (with help from bootstrap) and CSS
