@@ -3,9 +3,9 @@ Dominotion
 
 ###### What?
 
-Warrior O's are part of a balance breakfast. You get your daily dose of puzzle game with a serving of medieval warriors. You can play Warrior O's for free at [uken_hackathon.meteor.com](http://uken_hackathon.meteor.com).
+Dominotion is multi-player tile based game. Go head to head with a friend (or a random person online) placing tiles to control your warrior. Take down the opponent's warrior before they take down yours!
 
-Warrior O's is multi-player tile based game. Go head to head with a friend (or a random person online) placing tiles to control your warrior. Take down the opponent's warrior before they take down yours!
+You can play Dominotion for free at [uken_hackathon.meteor.com](http://uken_hackathon.meteor.com).
 
 ###### Why?
 Uken hackathon
@@ -20,7 +20,16 @@ How do I play this awesome game?
 
 ###### Rules
 
-explain the rules of the game...  
+1. Click draw hand
+2. Place one of your tiles on the board, each tile with a coloured edge must be placed touching a tile of that colour
+3. Each tile will cause your character to either attack, increase strength, or increase  defense
+4. If your opponents's health reaches 0, you win
+ 
+###### Legend
+
+Fist: Increase attack points by 1
+Swords: attack times the number of swords to do damage to your opponent
+Shield: increase your defense points by one, reducing the damage done by your opponent
 
 ###### Ok enough rules I want to play! NOW!
 
