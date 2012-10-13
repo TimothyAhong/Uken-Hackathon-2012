@@ -63,7 +63,7 @@ class game_model
     @restart_game: (game_id) ->
         game = game_model.get(game_id)
         games.remove({_id:game_id})
-        game_model.new_game(game.name)
+        anims.remove({game_id:Session.get('game_id')})
 
     @new_game: (name) ->
         games.insert(game_model.default_game(name))

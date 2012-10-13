@@ -18,6 +18,16 @@ Template.defeat_modal.rendered = ->
         show: false
     $('#defeat_modal').modal(options)
 
+Template.board_item.rendered = ->
+    $('.action_atk_plus').tooltip({title:'Increase your attack!'})
+    $('.action_atk').tooltip({title:'Attack once!'})
+    $('.action_atk2').tooltip({title:'Attack twice!!'})
+    $('.action_atk3').tooltip({title:'Attack thrice!!!'})
+    $('.action_def_plus').tooltip({title:'Increase your Defence!'})
+
+Template.game_bottom.rendered = ->
+    $("#new_hand").tooltip({title:'Get a new set of tiles!'})
+
 ###
 HELPERS
 ###

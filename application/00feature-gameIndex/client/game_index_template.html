@@ -24,10 +24,7 @@
         <td class="embt" style="width:300px;">{{name}}</td>
         <td style="width:160px;">
             <div class="btn-group">
-            <button id="play_game" class="btn btn-warning {{game_full_status}}"><i class="icon-asterisk icon-white"></i> Play</button>
-            {{#constant}}
-            <button id="watch_game" class="btn btn-warning"><i class="icon-eye-open icon-white"></i> Watch</button>
-            {{/constant}}
+            <button id="play_game" class="btn btn-warning {{game_full_status}}"><i class="icon-asterisk icon-white"></i>{{game_full_message}}</button>
             </div>
         </td>
     </tr>
