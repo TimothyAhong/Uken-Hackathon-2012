@@ -8,9 +8,11 @@
 
 <template name="game_top">
     <div class="gamebar fixed_top">
-        <div class="embossed_text" style="position:absolute; right:2px; bottom:-40px;">
+        {{#constant}}
+        <div id="enemy" class="embossed_text" style="position:absolute; right:2px; bottom:-40px;">
             ENEMY
         </div>
+        {{/constant}}
         <div class="row">
             <div class="bar_icons">
                 <i class="icon-heart icon-white"></i> X {{their_hearts}} <br />
@@ -30,9 +32,11 @@
 
 <template name="game_bottom">
     <div class="gamebar fixed_bottom">
-        <div class="embossed_text" style="position:absolute; left:0px; top:-42px;">
+        {{#constant}}
+        <div id="you" class="embossed_text" style="position:absolute; left:0px; top:-42px;">
             YOU
         </div>
+        {{/constant}}
         <div class="row">
             <div class="bar_icons">
                 <i class="icon-heart icon-white icon-large"></i> X {{my_hearts}} <br />

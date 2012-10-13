@@ -1,4 +1,9 @@
-
+###
+LIFECYLE
+###
+Template.board.rendered = ->
+    animation_controller.setup()
+    
 ###
 HELPERS
 ###
@@ -6,7 +11,6 @@ Template.board.helpers
     board_rows: -> 
         if(Session.get('page') == 'game')
             game = game_model.get(Session.get('game_id'))
-            console.log(game)
             return game['board']
 
 Template.board_item.helpers
@@ -75,7 +79,6 @@ EVENTS
 ###
 Template.board_item.events
     'click .board_item': (evt) ->
-        console.log(evt)
         if this.location == "board"
             game_controller.place_tile(this,evt)
         if this.location == Session.get('player_number')

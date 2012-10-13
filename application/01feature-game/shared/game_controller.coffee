@@ -8,7 +8,6 @@ class game_controller
     ###
     @play: (game_id) ->
         game = game_model.get(game_id)
-        console.log game
         #check if this game is full
         if game_controller.game_full(game)
             #TODO flash game full message
@@ -29,6 +28,9 @@ class game_controller
         Session.set('game_id',game_id)
         Session.set('page','game')
 
+        #setup our animations
+        animation_model.setup()
+
     ###
     GENERATE
     ###
@@ -40,7 +42,6 @@ class game_controller
         options = ['top','bottom','left','right']
         if edge_not?
             options = _.reject(options, (option) -> option == edge_not)
-        console.log(options)
         len = options.length
         return options[Math.floor( Math.random()*(len) )]
 
@@ -98,10 +99,14 @@ class game_controller
     @switch_turn: (game_id) ->
         #if we can place the tile then do the swap
         update = new mongo_update
-        update.$set.player_turn = if Session.get('player_number')==1 then 0 else 1
+        turn = if Session.get('player_number')==1 then 0 else 1
+        update.$set.player_turn = turn
         game_model.update(game_id,update)
 
-        #TODO update animation db for the player turn
+        #update animation to display the correct turn
+        options = 
+            'current_turn' : turn
+        animation_model.add('turn',options)
 
     @dmg: (def,atk) ->
         n = atk - def

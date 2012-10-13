@@ -6,6 +6,7 @@ Meteor.startup ->
     ###
     SAMPLE DATA
     ###
+    anims.remove({})
     games.remove({})
     game_model.new_game('This is a game')
     game_model.new_game('This is another game')
