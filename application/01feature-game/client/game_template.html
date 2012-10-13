@@ -58,6 +58,9 @@
 </template>
 
 <template name="board">
+    {{#constant}}
+        <div id="u_canvas_container" class="p1_canvas_container"></div>
+    {{/constant}}
     <div class="board_container">
         <table class="board">
             {{#each board_rows}}
@@ -65,6 +68,9 @@
             {{/each}}
         </table>
     </div>
+    {{#constant}}
+        <div id="e_canvas_container" class="p2_canvas_container"></div>
+    {{/constant}}
 </template>
 
 <template name="board_row">

@@ -15,7 +15,6 @@ class animation_model
         anims.insert({game_id:Session.get('game_id'),fun:fun,options:options})
 
     @observe: ->
-        #squabblers
         anims.find({ game_id:Session.get('game_id') }).observe
             added: (doc, beforeIndex) ->
                 console.log(doc)

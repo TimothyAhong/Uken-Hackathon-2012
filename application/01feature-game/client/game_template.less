@@ -66,7 +66,23 @@
     text-align: center;
     vertical-align: middle;
     position:absolute;
+    top: 20px;
 }
+
+.canvas_container {
+    position: absolute;
+    bottom:200px;
+}
+
+.p1_canvas_container {
+    .canvas_container;
+    left:0px;
+}
+.p2_canvas_container {
+    .canvas_container;
+    right:0px;
+}
+
 
 .hand_table td.board_item {
     padding:5px;
@@ -145,6 +161,10 @@ td.board_item {
     border-width:0px;
     width:80px;
     height:80px;
+}
+
+.selected_tile {
+    opacity:0.5;
 }
 
 .action_atk { 

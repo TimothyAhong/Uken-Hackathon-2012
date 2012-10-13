@@ -132,6 +132,11 @@ class game_controller
             when "def_plus"
                 players[player_num]['def'] += 1
 
+        #update animation to display the correct action
+        options = 
+            'player_num' : player_num
+        animation_model.add(tile.action,options)
+
         return players
 
     ###

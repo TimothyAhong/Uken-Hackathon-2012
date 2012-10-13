@@ -1,9 +1,13 @@
 ###
 LIFECYLE
 ###
+Template.board.created = ->
+    animation_controller.board_first = true
 Template.board.rendered = ->
-    animation_controller.setup()
-    
+    if animation_controller.board_first
+        animation_controller.setup()
+        animation_controller.board_first = false
+
 ###
 HELPERS
 ###
@@ -82,6 +86,10 @@ Template.board_item.events
         if this.location == "board"
             game_controller.place_tile(this,evt)
         if this.location == Session.get('player_number')
+            console.log(evt.target)
+            animation_controller.clear_grey()
+            animation_controller.make_grey(evt.target)
+
             game_controller.select_tile(this,evt)
 
 Template.game_bottom.events
