@@ -1,9 +1,9 @@
-Warrior O's
+Dominotion
 ================================
 
 ###### What?
 
-Warrior O's are part of a balance breakfast. You get your daily dose of puzzle game with a serving of medieval warriors. You can play Warrior O's for free at [warrioros.meteor.com](http://warrioros.meteor.com).
+Warrior O's are part of a balance breakfast. You get your daily dose of puzzle game with a serving of medieval warriors. You can play Warrior O's for free at [uken_hackathon.meteor.com](http://uken_hackathon.meteor.com).
 
 Warrior O's is multi-player tile based game. Go head to head with a friend (or a random person online) placing tiles to control your warrior. Take down the opponent's warrior before they take down yours!
 
@@ -26,7 +26,7 @@ explain the rules of the game...
 
 Dude, calm down. Follow these steps and everything will be alright...
 
-1. Goto [warrioros.meteor.com](http://warrioros.meteor.com)
+1. Goto [uken_hackathon.meteor.com](http://uken_hackathon.meteor.com)
 2. Create a game by typing your desired game name and selecting 'Create Game'
 3. Find a friend and have them join your game (you need 2 people to play)
     * If you have no friends we'll be your friends. Add us on GChat and we'll play with you
