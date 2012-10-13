@@ -6,21 +6,31 @@
 
 <template name="game_top">
     <div class="row">
-        <table>
-        {{#each their_hand}}
-            {{>board_item}}
-        {{/each}}
-        </table>
+        <div class="span3">
+            <table>
+            {{#each their_hand}}
+                {{>board_item}}
+            {{/each}}
+            </table>
+        </div>
+        <div><i class="icon-heart"></i>{{their_hearts}}</div>
+        <div><i class="icon-circle-arrow-up"></i>{{their_def}}</div>
+        <div><i class="icon-arrow-up"></i>{{their_atk}}</div>
     </div>
 </template>
 
 <template name="game_bottom">
     <div class="row">
-        <table>
-        {{#each my_hand}}
-            {{>board_item}}
-        {{/each}}
-        </table>
+        <div class="span3">
+            <table>
+            {{#each my_hand}}
+                {{>board_item}}
+            {{/each}}
+            </table>
+        </div>
+        <div><i class="icon-heart"></i>{{my_hearts}}</div>
+        <div><i class="icon-circle-arrow-up"></i>{{my_def}}</div>
+        <div><i class="icon-arrow-up"></i>{{my_atk}}</div>
     </div>
 </template>
 
@@ -44,6 +54,7 @@
 <template name="board_item">
     <td class="board_item">
         <div class="board_item_graphic {{class_list}}">
+            {{action}}
         </div>
     </td>
 </template>

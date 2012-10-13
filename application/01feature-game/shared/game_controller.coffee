@@ -78,7 +78,7 @@ class game_controller
     ###
     @dealto: (game_id,player_num) ->
         game = game_model.get(game_id)
-        location = if player_num == Session.get('player_number') then 'my hand' else 'their hand'
+        location = player_num
 
         update = new mongo_update
         update.$set.players = game.players
@@ -90,6 +90,31 @@ class game_controller
 
     @switch_turn: (game_id,player_num) ->
 
+    @dmg: (def,atk) ->
+        n = atk - def
+        if n < 1
+            n = 1
+        return n
+
+    @action: (tile,players,player_num) ->
+        other_num = if player_num == 1 then 0 else 1
+
+        switch(tile.action)
+            when "atk"
+                players[other_num]['hearts'] -= game_controller.dmg(players[other_num]['def'],players[player_num]['atk'])
+            when "atk2"
+                players[other_num]['hearts'] -= game_controller.dmg(players[other_num]['def'],players[player_num]['atk'])
+                players[other_num]['hearts'] -= game_controller.dmg(players[other_num]['def'],players[player_num]['atk'])
+            when "atk3"
+                players[other_num]['hearts'] -= game_controller.dmg(players[other_num]['def'],players[player_num]['atk'])
+                players[other_num]['hearts'] -= game_controller.dmg(players[other_num]['def'],players[player_num]['atk'])
+                players[other_num]['hearts'] -= game_controller.dmg(players[other_num]['def'],players[player_num]['atk'])
+            when "atk_plus"
+                players[player_num]['atk'] += 1
+            when "def_plus"
+                players[player_num]['def'] += 1
+
+        return players
 
     ###
     PLAYER ACTIONS
@@ -104,37 +129,55 @@ class game_controller
         game_controller.active_tile = target
 
     @place_tile: (target,evt) ->
-
+        game_id = Session.get('game_id')
+        player_num = Session.get('player_number')
         #person just clicking around
         if !game_controller.active_tile? or !game_controller.active_tile
             return
 
         placeable = game_controller.active_tile
-        game = game_model.get(Session.get('game_id'))
+        game = game_model.get(game_id)
 
-        #check if we can place this tile
-        if placeable.color_bottom != 'w' and target.y != game_constants.board_height
-            if placeable.color_bottom != game.board[target.y+1][target.x]
+        #check if this tile is occupied
+        if target.color != 'w'
+            return
+
+        #check if adjacent tiles are not right
+        if placeable.color_bottom != 'w'
+            if target.y == game_constants.board_height
+                return
+            if placeable.color_bottom != game.board[target.y+1][target.x]['color']
                 return
 
-        if placeable.color_top != 'w' and target.y !=0
-            if placeable.color_bottom != game.board[target.y-1][target.x]
+        if placeable.color_top != 'w'
+            if target.y == 0
+                return
+            if placeable.color_top != game.board[target.y-1][target.x]['color']
                 return
 
         if placeable.color_left != 'w'
-            if placeable.color_bottom != game.board[target.y+1][target.x]
+            if target.x == 0
+                return
+            if placeable.color_left != game.board[target.y][target.x-1]['color']
                 return
 
         if placeable.color_right != 'w'
-            if placeable.color_bottom != game.board[target.y+1][target.x]
+            if target.x == game_constants.board_width
+                return
+            if placeable.color_right != game.board[target.y][target.x+1]['color']
                 return
 
-        
-
-
+        #if we can place the tile then do the swap
         update = new mongo_update
         update.$set.board = game.board
+        update.$set.board[target.y][target.x] = placeable
 
+        #do the action on the tile
+        update.$set.players = game_controller.action(placeable,game.players,player_num)
+
+        game_model.update(game_id,update)
+
+        game_controller.active_tile = false
         game_controller.switch_turn(game_id,player_num)
 
 

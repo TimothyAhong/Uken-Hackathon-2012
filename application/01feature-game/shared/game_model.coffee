@@ -24,6 +24,8 @@ class game_model
             num: player_num
             hand: []
             hearts: 10
+            def: 0
+            atk: 1
         return item
 
     @default_board: ->
@@ -78,7 +80,7 @@ class game_model
             return
 
         #determine the player number
-        if location == 'my hand'
+        if location == Session.get('player_number')
             num = player_num
         else
             num = if player_num == 0 then 1 else 0
