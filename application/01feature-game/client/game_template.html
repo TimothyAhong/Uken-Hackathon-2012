@@ -4,6 +4,8 @@
         {{>board}}
         {{>game_bottom}}
     </div>
+    {{>defeat_modal}}
+    {{>victory_modal}}
 </template>
 
 <template name="game_top">
@@ -59,7 +61,7 @@
 
 <template name="board">
     <div class='p1_stats'>
-        
+
     </div>
     {{#constant}}
         <div id="u_canvas_container" class="p1_canvas_container"></div>
@@ -89,6 +91,41 @@
         <div class="board_item_graphic {{class_list}}">
         </div>
     </td>
+</template>
+
+
+<template name="defeat_modal">
+{{#constant}}
+  <div id="defeat_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none; ">
+    <div class="modal-header">
+      <button id="exit" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">Defeat!</h3>
+    </div>
+    <div class="modal-body">
+     
+    </div>
+    <div class="modal-footer">
+      <button id="exit" class="btn btn-warning" data-dismiss="modal">Exit</button>
+    </div>
+  </div>
+{{/constant}}
+</template>
+
+<template name="victory_modal">
+{{#constant}}
+  <div id="victory_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none; ">
+    <div class="modal-header">
+      <button id="exit" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">Victory!</h3>
+    </div>
+    <div class="modal-body">
+     
+    </div>
+    <div class="modal-footer">
+      <button id="exit" class="btn btn-warning" data-dismiss="modal">Exit</button>
+    </div>
+  </div>
+{{/constant}}
 </template>
 
 

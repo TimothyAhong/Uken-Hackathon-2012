@@ -125,11 +125,9 @@ class animation_controller
 
         #display the tooltip
         if player_turn == Session.get('player_number')
-            console.log('yours')
             $('#you').popover(op)
             $('#you').popover('show')
         else
-            console.log("not yours")
             op['placement'] = 'left'
             $('#enemy').popover(op)
             $('#enemy').popover('show')
@@ -139,6 +137,12 @@ class animation_controller
 
     @make_grey: (target) ->
         $(target).addClass('selected_tile')
+
+    @player_dead: (options) ->
+        if options['player_num'] == Session.get('player_number')
+            $('#defeat_modal').modal('show')
+        else
+            $('#victory_modal').modal('show')
     
     ###
     SPRITE CONTROL

@@ -132,6 +132,13 @@ class game_controller
             when "def_plus"
                 players[player_num]['def'] += 1
 
+        #check game state to see if its over
+        if players[other_num]['hearts'] < 1
+            options = 
+                'player_num' : other_num
+            animation_model.add('player_dead',options)
+            game_model.restart_game(Session.get('game_id'))
+
         #update animation to display the correct action
         options = 
             'player_num' : player_num

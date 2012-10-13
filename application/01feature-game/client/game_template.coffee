@@ -8,6 +8,16 @@ Template.board.rendered = ->
         animation_controller.setup()
         animation_controller.board_first = false
 
+Template.victory_modal.rendered = ->
+    options = 
+        show: false
+    $('#victory_modal').modal(options)
+
+Template.defeat_modal.rendered = ->
+    options = 
+        show: false
+    $('#defeat_modal').modal(options)
+
 ###
 HELPERS
 ###
@@ -95,3 +105,9 @@ Template.board_item.events
 Template.game_bottom.events
     'click #new_hand': (evt) ->
         game_controller.draw_cards(Session.get('game_id'),Session.get('player_number'))
+
+Template.defeat_modal.events
+    'click #exit': (evt) -> document.location.reload(true)
+
+Template.victory_modal.events
+    'click #exit': (evt) -> document.location.reload(true)

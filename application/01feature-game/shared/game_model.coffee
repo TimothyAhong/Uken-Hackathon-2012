@@ -23,7 +23,7 @@ class game_model
         item =
             num: player_num
             hand: []
-            hearts: 10
+            hearts: 1
             def: 0
             atk: 1
         return item
@@ -60,6 +60,11 @@ class game_model
     ###
     INSERT/DELETE
     ###
+    @restart_game: (game_id) ->
+        game = game_model.get(game_id)
+        games.remove({_id:game_id})
+        game_model.new_game(game.name)
+
     @new_game: (name) ->
         games.insert(game_model.default_game(name))
 
