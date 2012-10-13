@@ -7,5 +7,6 @@ Meteor.startup ->
     SESSION SETUP
     ###
     Session.set('page','game_index')
+    Session.set('game_id',false)
 
     

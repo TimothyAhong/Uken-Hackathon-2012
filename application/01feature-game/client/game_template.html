@@ -1,0 +1,52 @@
+<template name="game">
+    {{>game_top}}
+    {{>board}}
+    {{>game_bottom}}
+</template>
+
+<template name="game_top">
+    <div class="row">
+        <table>
+        {{#each their_hand}}
+            {{>board_item}}
+        {{/each}}
+        </table>
+    </div>
+</template>
+
+<template name="game_bottom">
+    <div class="row">
+        <table>
+        {{#each my_hand}}
+            {{>board_item}}
+        {{/each}}
+        </table>
+    </div>
+</template>
+
+<template name="board">
+    BOARD
+    <table class="board">
+        {{#each board_rows}}
+            {{>board_row}}
+        {{/each}}
+    </table>
+</template>
+
+<template name="board_row">
+    <tr class="board_row">
+    {{#each .}}
+        {{>board_item}}
+    {{/each}}
+    </tr>
+</template>
+
+<template name="board_item">
+    <td class="board_item">
+        <div class="board_item_graphic {{class_list}}">
+        </div>
+    </td>
+</template>
+
+
+

@@ -32,27 +32,28 @@ class game_model
         for i in [0..game_constants.board_height-1]
             item[i] = []
             for j in [0..game_constants.board_width-1]
-                item[i][j] = game_model.default_tile()
+                item[i][j] = game_model.default_tile('board',i,j)
         return item
 
-    @default_tile: ->
+    @default_tile: (location,y,x)->
+        item = []
         item =
-            type        : 'empty'
-            class_outer : 'empty_outer'
-            class_inner : 'empty_inner'
-            color       : 'w'
-            color_bot   : 'w'
-            color_top   : 'w'
-            color_left  : 'w'
-            color_right : 'w'
-            action      : false
+            'type'        : 'empty'
+            'color'       : 'w'
+            'color_bottom': 'w'
+            'color_top'   : 'w'
+            'color_left'  : 'w'
+            'color_right' : 'w'
+            'action'      : false
+            'location'     : location
+            'y'           : y
+            'x'           : x
         return item
 
     ###
     GETTER
     ###
-    @get: (game_id) ->
-        games.findOne({_id:game_id})
+    @get: (game_id) -> games.findOne({_id:game_id})
 
     ###
     INSERT/DELETE
@@ -62,12 +63,30 @@ class game_model
 
     @new_player: (game_id, player_num) ->
         #update
+        game = game_model.get(game_id)
         update = new mongo_update
-        update.$set.players = {}
+        update.$set.players = game.players
         update.$set.players[player_num] = game_model.default_player(player_num)
-        console.log update
         game_model.update(game_id,update)
 
+    @remove_tile: (game_id, player_num, location, y, x) ->
+        game = game_model.get(game_id)
+        update = new mongo_update
+
+        if location == 'board'
+            console.log("you should never see this")
+            return
+
+        #determine the player number
+        if location == 'my hand'
+            num = player_num
+        else
+            num = if player_num == 0 then 1 else 0
+
+        #remove that item from that persons hand
+        update.$set.players = game.players
+        update.$set.players[num]['hand'] = game.players[num]['hand'].splice(y,1)
+        game_model.update(game_id,update)
 
     ###
     UPDATE

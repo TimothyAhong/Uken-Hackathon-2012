@@ -1,10 +1,8 @@
-
 ###
 HELPERS
 ###
 Template.game_index.helpers
     game_index_items : -> game_index_model.get_all()
-
 
 ###
 EVENTS

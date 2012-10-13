@@ -1,0 +1,18 @@
+<head>
+  <title>uken_hackathon</title>
+</head>
+
+
+<body>
+    {{>main}}
+</body>
+
+<template name="main">
+    {{#if game_index_page}}
+        {{>game_index}}
+    {{/if}}
+    {{#if game_page}}
+        {{>game}}
+    {{/if}}
+</template>
+
