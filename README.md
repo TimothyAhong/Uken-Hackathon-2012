@@ -81,8 +81,8 @@ How do I run my own Dominotion Server?
 <pre>
 $ curl https://install.meteor.com | sh
 </pre>
-2. Download the source
-3. Navigate to the folder and run
+2. Download the Dominotion source
+3. Navigate to the folder and you can run the server locally (connect via http://localhost:3000/) with the following command
 <pre>
 $ meteor
 </pre>
