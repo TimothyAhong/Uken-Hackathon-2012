@@ -70,6 +70,10 @@ Template.game_bottom.helpers
         game = game_model.get(Session.get('game_id'))
         return game['players'][Session.get('player_number')]['atk']
 
+    my_hp: ->
+        game = game_model.get(Session.get('game_id'))
+        return (game['players'][Session.get('player_number')]['hearts'] / 10.0)*100
+
 
 Template.game_top.helpers
     their_hand: ->
@@ -98,6 +102,14 @@ Template.game_top.helpers
         if game['players'][num]?
             return game['players'][num]['atk']
         else return 0
+
+     their_hp: ->
+        game = game_model.get(Session.get('game_id'))
+        num = if Session.get('player_number') == 1 then 0 else 1
+        if game['players'][num]?
+            return (game['players'][num]['hearts'] / 10.0)*100
+        else return 0
+
 ###
 EVENTS
 ###

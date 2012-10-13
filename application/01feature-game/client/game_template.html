@@ -10,6 +10,11 @@
 
 <template name="game_top">
     <div class="gamebar fixed_top">
+        <div class="their_hp">
+            <div class="progress progress-striped active" style="width:70px;position:absolute; right:60px; top:330px;">
+              <div class="bar bar-danger" style="width: {{their_hp}}%;"></div>
+            </div>
+        </div>
         {{#constant}}
         <div id="enemy" class="embossed_text" style="position:absolute; right:5px; bottom:-70px;">
             ENEMY
@@ -34,6 +39,11 @@
 
 <template name="game_bottom">
     <div class="gamebar fixed_bottom">
+        <div class="u_hp">
+            <div class="progress progress-striped active" style="width:70px;position:absolute; left:60px; bottom:330px;">
+              <div class="bar bar-danger" style="width: {{my_hp}}%;"></div>
+            </div>
+        </div>
         {{#constant}}
         <div id="you" class="embossed_text" style="position:absolute; left:5px; top:-75px;">
             YOU
