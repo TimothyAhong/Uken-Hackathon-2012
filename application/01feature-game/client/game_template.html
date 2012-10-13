@@ -9,7 +9,7 @@
 <template name="game_top">
     <div class="gamebar fixed_top">
         {{#constant}}
-        <div id="enemy" class="embossed_text" style="position:absolute; right:2px; bottom:-40px;">
+        <div id="enemy" class="embossed_text" style="position:absolute; right:5px; bottom:-70px;">
             ENEMY
         </div>
         {{/constant}}
@@ -33,7 +33,7 @@
 <template name="game_bottom">
     <div class="gamebar fixed_bottom">
         {{#constant}}
-        <div id="you" class="embossed_text" style="position:absolute; left:0px; top:-42px;">
+        <div id="you" class="embossed_text" style="position:absolute; left:5px; top:-75px;">
             YOU
         </div>
         {{/constant}}
@@ -78,7 +78,6 @@
 <template name="board_item">
     <td class="board_item">
         <div class="board_item_graphic {{class_list}}">
-            {{action}}
         </div>
     </td>
 </template>
