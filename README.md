@@ -28,9 +28,9 @@ How do I play this awesome game?
  
 ###### Legend
 
-Fist: Increase attack points by 1
-Swords: attack times the number of swords, to do damage to your opponent
-Shield: increase your defense points by one, reducing the damage done by your opponent
+Fist: Increase attack points by 1   
+Swords: attack times the number of swords, to do damage to your opponent   
+Shield: increase your defense points by one, reducing the damage done by your opponent   
 
 ###### Ok enough rules I want to play! NOW!
 
