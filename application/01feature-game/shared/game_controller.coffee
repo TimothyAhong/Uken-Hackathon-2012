@@ -54,6 +54,10 @@ class game_controller
         return options[rank][Math.floor((Math.random()*len))]
 
     @generate_random_tile: (rank, location, y, x) ->
+        
+        if rank == false
+            rank = Math.floor(Math.random()*3)
+
         tile = game_model.default_tile(location, y, x)
 
         tile.action = game_controller.generate_random_action(rank)
@@ -85,10 +89,16 @@ class game_controller
         update.$set.players[player_num]['hand'] = []
         update.$set.players[player_num]['hand'][0] = game_controller.generate_random_tile(0, location, 0, 0)
         update.$set.players[player_num]['hand'][1] = game_controller.generate_random_tile(1, location, 1, 0)
-        update.$set.players[player_num]['hand'][2] = game_controller.generate_random_tile(2, location, 2, 0)
+        update.$set.players[player_num]['hand'][2] = game_controller.generate_random_tile(1, location, 2, 0)
+        update.$set.players[player_num]['hand'][3] = game_controller.generate_random_tile(1, location, 3, 0)
+        update.$set.players[player_num]['hand'][4] = game_controller.generate_random_tile(2, location, 4, 0)
         game_model.update(game_id,update)
 
-    @switch_turn: (game_id,player_num) ->
+    @switch_turn: (game_id) ->
+        #if we can place the tile then do the swap
+        update = new mongo_update
+        update.$set.player_turn = if Session.get('player_number')==1 then 0 else 1
+        game_model.update(game_id,update)
 
     @dmg: (def,atk) ->
         n = atk - def
@@ -125,7 +135,6 @@ class game_controller
 
     @select_tile: (target,evt) ->
         #set the active tile
-        console.log(target)
         game_controller.active_tile = target
 
     @place_tile: (target,evt) ->
@@ -137,6 +146,10 @@ class game_controller
 
         placeable = game_controller.active_tile
         game = game_model.get(game_id)
+
+        #make sure its this players turn
+        if game.player_turn != player_num
+            return
 
         #check if this tile is occupied
         if target.color != 'w'
@@ -167,18 +180,21 @@ class game_controller
             if placeable.color_right != game.board[target.y][target.x+1]['color']
                 return
 
-        #if we can place the tile then do the swap
+        #if we can place the tile then do the swap and remove the tile from your hand
         update = new mongo_update
         update.$set.board = game.board
         update.$set.board[target.y][target.x] = placeable
 
+        update.$set.players = game.players
+        update.$set.players[player_num]['hand'][placeable.y] = game_controller.generate_random_tile(false, player_num, placeable.y, 0)
+        
         #do the action on the tile
         update.$set.players = game_controller.action(placeable,game.players,player_num)
 
         game_model.update(game_id,update)
 
         game_controller.active_tile = false
-        game_controller.switch_turn(game_id,player_num)
+        game_controller.switch_turn(game_id)
 
 
     ###

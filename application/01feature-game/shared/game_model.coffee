@@ -16,7 +16,7 @@ class game_model
             players: []
             board: game_model.default_board()
             state: "not started"
-            player_turn: 1
+            player_turn: 0
         return item
 
     @default_player: (player_num) ->
@@ -71,7 +71,7 @@ class game_model
         update.$set.players[player_num] = game_model.default_player(player_num)
         game_model.update(game_id,update)
 
-    @remove_tile: (game_id, player_num, location, y, x) ->
+    @remove_tile: (game_id, player_num, y) ->
         game = game_model.get(game_id)
         update = new mongo_update
 
