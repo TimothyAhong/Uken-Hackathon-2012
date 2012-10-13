@@ -23,7 +23,7 @@ class game_model
         item =
             num: player_num
             hand: []
-            hearts: 1
+            hearts: 10
             def: 0
             atk: 1
         return item
